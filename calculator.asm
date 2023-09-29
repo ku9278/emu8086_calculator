@@ -1,8 +1,3 @@
-; You may customize this and other start-up templates; 
-; The location of this template is c:\emu8086\inc\0_com_template.txt
-; https://bluefallsky.tistory.com/entry/%EC%96%B4%EC%85%88%EB%B8%94%EB%A6%AC%EC%96%B4-INT-21h-%EC%A0%95%EB%A6%AC
-
-
 ; a +-*/ b = ?
 org 100h
 
