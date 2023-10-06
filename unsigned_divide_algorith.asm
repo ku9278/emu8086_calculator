@@ -31,13 +31,13 @@ divide:
     dec si
     
     continue1:
+    pop bx
     test si, si    ;if A == 0
     jnz continue2
     test bp, bp
     jz success
     
     continue2:
-    pop bx
     xor bx, si    ;If the signs of A before and after operation (1) are the same 
     cmp bx, 8000h
     jc success
