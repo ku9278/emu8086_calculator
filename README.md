@@ -1,9 +1,11 @@
 # emu8086_calculator
 
 
+
 #### Input range: -32767 ~ 32767
 #### Backspace enabled
 #### Multiple calculations disabled
+
 
 #### Input Example: 
 1234+1234=
@@ -13,6 +15,7 @@
 1234-1234=
 1234*1234=
 1234/1234=
+
 
 #### Exception handling:
 1. If calculator receive a character that is not a number or operator
