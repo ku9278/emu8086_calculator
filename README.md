@@ -3,7 +3,7 @@
 
 #### Input range: -32767 ~ 32767
 #### Backspace enabled
-#### Multiple calculations disabled   
+#### Multiple calculations disabled___
 
 #### Input Example: 
 1234+1234=
