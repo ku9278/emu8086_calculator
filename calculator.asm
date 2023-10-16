@@ -117,7 +117,7 @@ input_push:
 check_minus_1:
     mov ax, [bp]
     cmp bp, sp    
-    je error    ;exception_handlingh_4
+    je error    ;exception_handling_4
     
     cmp al, 2dh    ;if(al == 2d(ASCII -)) 
     je minus_1
@@ -126,27 +126,27 @@ check_minus_1:
 check_num1:
     mov ax, [bp]
     cmp bp, sp    
-    je error    ;exception_handlingh_4
+    je error    ;exception_handling_4
     cmp al, 30h    ;if(al < 30(ASCII 0)) jmp op_check
     jc check_op
     cmp al, 40h    ;if(al >= 40(ASCII :)) jmp error
-    jnc error    ;exception_handlingh_1
+    jnc error    ;exception_handling_1
     
     push ax    ;bx * a + al
     mov ax, bx
     mov bx, 000ah
     mul bx
-    jc error    ;exception_handlingh_5
+    jc error    ;exception_handling_5
     cmp ax, 8000h
-    jnc error    ;exception_handlingh_5
+    jnc error    ;exception_handling_5
     mov bx, ax
     pop ax
     mov ah, 00h
     sub al, 30h
     add bx, ax
-    jc error    ;exception_handlingh_5
+    jc error    ;exception_handling_5
     cmp bx, 8000h
-    jnc error    ;exception_handlingh_5
+    jnc error    ;exception_handling_5
         
     sub bp, 2
     jmp check_num1
@@ -161,7 +161,7 @@ check_op:
     je save_op
     cmp al, 2fh    ;/
     je save_op
-    jmp error    ;exception_handlingh_1
+    jmp error    ;exception_handling_1
 
      
 save_op:
@@ -173,7 +173,7 @@ save_op:
 check_minus_2:
     mov ax, [bp]
     cmp bp, sp    
-    je error    ;exception_handlingh_4
+    je error    ;exception_handling_4
     
     cmp al, 2dh    ;if(a == 2d(ASCII -)) 
     je minus_2
@@ -181,28 +181,28 @@ check_minus_2:
      
 check_num2:            
     mov ax, [bp]
-    cmp bp, sp    ;exception_handlingh_
+    cmp bp, sp
     je output
     cmp al, 30h    ;if(al < 30(ASCII 0)) jmp op_check
-    jc error    ;exception_handlingh_2,4
+    jc error    ;exception_handling_2,4
     cmp al, 40h    ;if(al >= 40(ASCII :)) jmp error
-    jnc error    ;exception_handlingh_1
+    jnc error    ;exception_handling_1
     
     push ax    ;bx * a + al
     mov ax, dx
     mov dx, 000ah
     mul dx
-    jc error    ;exception_handlingh_5
+    jc error    ;exception_handling_5
     cmp ax, 8000h
-    jnc error    ;exception_handlingh_5
+    jnc error    ;exception_handling_5
     mov dx, ax
     pop ax
     mov ah, 00h
     sub al, 30h
     add dx, ax
-    jc error    ;exception_handlingh_5
+    jc error    ;exception_handling_5
     cmp dx, 8000h
-    jnc error    ;exception_handlingh_5
+    jnc error    ;exception_handling_5
      
     sub bp, 2 
     jmp check_num2
@@ -366,7 +366,7 @@ CAL PROC
         
     func_div:
         test cx, cx    ;if(cx == 0)
-        je cal_error    ;exception_handlingh_3
+        je cal_error    ;exception_handling_3
         
         idiv cx
         jmp div_print
