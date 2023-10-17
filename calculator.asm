@@ -81,7 +81,7 @@ CRLF DB 0Dh,0Ah,'$'    ;Line Wrapping
 
 start:
     mov bp, 0fffch
-    mov ax, 0000h
+    mov ax, 0100h
     mov bx, 0000h
     mov cx, 0000h
     mov dx, 0000h
@@ -91,7 +91,16 @@ input:
     mov ah, 01h
     int 21h
     cmp al, 08h    ;if(al == 08(ASCII backspace))
-    jne input_push
+    je backspace
+    cmp al, 1bh   ;Press Esc to exit
+    je ending
+
+
+input_push:
+    push ax
+    cmp al, 3dh    ;if(al == 3d(ASCII =))
+    je check_minus_1
+    jmp input
     
     
 backspace:
@@ -105,12 +114,6 @@ backspace:
     int 21h             ; Display it
       
     pop ax
-    jmp input
-    
-input_push:
-    push ax
-    cmp al, 3dh    ;if(al == 3d(ASCII =))
-    je check_minus_1
     jmp input
        
        
@@ -263,8 +266,10 @@ output:
     
     jmp start 
 
- 
-ret
+
+ending:
+    mov sp, 0fffeh
+    ret
 
 
 ;ax: num1, bh: minus, bl: operator, cx: num2
