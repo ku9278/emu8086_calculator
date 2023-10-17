@@ -2,8 +2,9 @@
 <br/>
    
 #### Input range: -32767 ~ 32767
-#### Backspace enabled
-#### Multiple calculations disabled   
+#### Backspace is enabled
+#### Multiple calculations is disabled
+#### Press Esc to exit program
 <br/>
 
 #### Input Example: 
